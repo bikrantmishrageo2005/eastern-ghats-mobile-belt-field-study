@@ -299,3 +299,21 @@ https://drive.google.com/file/d/1RARTVAqPCuQO_Yaq7eBROUf2qzYmINB_/view?usp=shari
 Geology Student  
 Khallikote Unitary University  
 Odisha, India
+
+---
+
+## 🌐 Live Project Website
+
+You can explore the full interactive geological portfolio here:
+
+🔗 https://bikrantmishrageo2005.github.io/eastern-ghats-mobile-belt-field-study/
+
+This website presents the Eastern Ghats Mobile Belt field study with interactive maps, geological observations, structural interpretations, and a 3D rock viewer.
+
+---
+
+## 📂 Project Repository
+
+Full project files, geological images, and documentation are available here:
+
+🔗 https://github.com/bikrantmishrageo2005/eastern-ghats-mobile-belt-field-study
