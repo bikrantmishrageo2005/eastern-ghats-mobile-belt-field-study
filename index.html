@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,113 +14,137 @@
 body{
 margin:0;
 font-family:Segoe UI;
-background:black;
+background:#070707;
 color:white;
-overflow-x:hidden;
 }
 
-/* GALAXY BACKGROUND */
+/* SPACE BACKGROUND */
 
 body::before{
-
 content:"";
 position:fixed;
 width:100%;
 height:100%;
-background:url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa");
+background:url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
 background-size:cover;
-opacity:0.25;
+opacity:0.35;
 z-index:-1;
-
 }
 
 /* NAV */
 
 nav{
-
 position:fixed;
 width:100%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-padding:15px;
+background:rgba(0,0,0,0.8);
+padding:10px;
 text-align:center;
-
 }
 
 nav a{
-
 color:white;
-margin:20px;
+margin:12px;
 text-decoration:none;
 font-weight:bold;
-
 }
 
 /* HERO */
 
 .hero{
-
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+padding-top:120px;
 text-align:center;
-
 }
 
 .hero h1{
-
-font-size:48px;
-
+font-size:42px;
 }
 
-/* GLASS SECTION */
+/* SECTION */
 
 .section{
-
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-margin-top:120px;
-padding:40px;
+margin-top:60px;
+padding:35px;
 
 background:rgba(255,255,255,0.05);
-border-radius:20px;
-backdrop-filter:blur(20px);
-
+border-radius:15px;
+backdrop-filter:blur(8px);
 }
 
 /* GALLERY */
 
 .gallery{
-
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-
+gap:25px;
 }
 
-.gallery img{
-
-width:100%;
+.card{
+background:#111;
 border-radius:10px;
+overflow:hidden;
+}
 
+.card img{
+width:100%;
+cursor:pointer;
+}
+
+.caption{
+padding:10px;
+font-size:14px;
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
 }
 
 /* MAP */
 
 #map{
-
 height:500px;
-
 }
 
-footer{
+/* 3D VIEWERS */
 
+#rockviewer,#globe{
+height:350px;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+td,th{
+border:1px solid #333;
+padding:10px;
+}
+
+/* FOOTER */
+
+footer{
 text-align:center;
 padding:40px;
 opacity:0.7;
-
 }
 
 </style>
@@ -133,9 +156,12 @@ opacity:0.7;
 <nav>
 
 <a href="#about">About</a>
+<a href="#toposheet">Toposheet</a>
+<a href="#globe">Globe</a>
 <a href="#viewer">3D Rock</a>
 <a href="#gallery">Gallery</a>
 <a href="#map">Map</a>
+<a href="#ai">AI Rock</a>
 <a href="#report">Report</a>
 
 </nav>
@@ -146,62 +172,132 @@ opacity:0.7;
 <h1>Eastern Ghats Mobile Belt</h1>
 <p>Geological Field Study – Bikrant Kumar Mishra</p>
 
-<div id="earth"></div>
-
 </section>
 
 
 <section class="section" id="about">
 
-<h2>About This Project</h2>
+<h2>About Project</h2>
 
 <p>
 
-This geological field study focuses on the Eastern Ghats Mobile Belt (EGMB) in Odisha, India.  
+This study documents geological structures and metamorphic rocks from the Eastern Ghats Mobile Belt in Odisha.
 
-The research documents metamorphic rock formations, fold structures, dyke intrusions, gneissic banding and structural geology observed in the regions of Bhabandha, Bhatakumuruda, Baghdevi and Athagadapatana.
+Observed structures include folds, faults, gneissic banding, dyke intrusions and garnetiferous metamorphic rocks.
 
 </p>
 
 </section>
 
 
+<section class="section" id="toposheet">
+
+<h2>Study Area Toposheet</h2>
+
+<img src="egmb_study_area_toposheet.jpg" width="100%">
+
+</section>
+
+
+<section class="section">
+
+<h2>Geological Globe</h2>
+
+<div id="globe"></div>
+
+</section>
+
+
 <section class="section" id="viewer">
 
-<h2>3D Rock Viewer</h2>
+<h2>3D Rock Model</h2>
 
 <div id="rockviewer"></div>
 
 </section>
 
 
+<section class="section">
+
+<h2>Geological Data</h2>
+
+<table>
+
+<tr>
+<th>Rock Type</th>
+<th>Mineral</th>
+<th>Location</th>
+</tr>
+
+<tr>
+<td>Garnetiferous Gneiss</td>
+<td>Garnet</td>
+<td>Bhabandha</td>
+</tr>
+
+<tr>
+<td>Mica Schist</td>
+<td>Biotite</td>
+<td>Baghdevi</td>
+</tr>
+
+<tr>
+<td>Granite</td>
+<td>Quartz Feldspar</td>
+<td>Athagadapatana</td>
+</tr>
+
+</table>
+
+</section>
+
+
 <section class="section" id="gallery">
 
-<h2>Field Observation Gallery</h2>
+<h2>Field Gallery</h2>
 
 <div class="gallery">
 
+<div class="card">
 <img src="anticline_fold_gneiss_outcrop.jpg">
+<div class="caption">Anticline fold in gneiss.</div>
+</div>
+
+<div class="card">
 <img src="augen_gneiss_structure.jpg">
-<img src="bhabandha_geological_outcrop.jpg">
-<img src="biotite_gneiss_outcrop_egmb.jpg">
-<img src="chevron_fold_structure_gneiss.jpg">
-<img src="dyke_intrusion_structure.jpg">
-<img src="fault_displacement_structure.jpg">
-<img src="garnet_pokering_weathering.jpg">
-<img src="garnetiferous_gneiss_outcrop.jpg">
-<img src="garnetiferous_gneiss_texture.jpg">
+<div class="caption">Augen gneiss structure.</div>
+</div>
+
+<div class="card">
 <img src="gneissic_banding_outcrop.jpg">
-<img src="gneissic_banding_outcrop_egmb.jpg">
-<img src="granite_outcrop_eastern_ghats.jpg">
-<img src="isoclinal_fold_gneiss_structure.jpg">
+<div class="caption">Gneissic banding.</div>
+</div>
+
+<div class="card">
+<img src="garnetiferous_gneiss_outcrop.jpg">
+<div class="caption">Garnetiferous gneiss.</div>
+</div>
+
+<div class="card">
 <img src="mafic_dyke_intrusion_in_gneiss.jpg">
-<img src="mica_schist_foliation_egmb.jpg">
-<img src="quartz_feldspar_vein_gneiss.jpg">
-<img src="syncline_fold_gneiss_outcrop.jpg">
+<div class="caption">Mafic dyke intrusion.</div>
+</div>
+
+<div class="card">
 <img src="tor_landform_granite.jpg">
+<div class="caption">Granite tor landform.</div>
+</div>
 
 </div>
+
+</section>
+
+
+<section class="section">
+
+<h2>Field Route</h2>
+
+Berhampur → Bhabandha → Baghdevi → Athagadapatana
 
 </section>
 
@@ -215,19 +311,26 @@ The research documents metamorphic rock formations, fold structures, dyke intrus
 </section>
 
 
+<section class="section" id="ai">
+
+<h2>AI Rock Identifier (Demo)</h2>
+
+<input type="file" id="upload">
+
+<p id="result"></p>
+
+</section>
+
+
 <section class="section" id="report">
 
 <h2>Full Geological Report</h2>
 
-<p>
-
 <a href="https://drive.google.com/file/d/1RARTVAqPCuQO_Yaq7eBROUf2qzYmINB_/view?usp=sharing" target="_blank">
 
-Open Full Geological Field Report
+View Full PDF Report
 
 </a>
-
-</p>
 
 </section>
 
@@ -236,45 +339,53 @@ Open Full Geological Field Report
 
 Bikrant Kumar Mishra  
 Department of Geology  
-Khallikote Unitary University  
+Khallikote University
 
 </footer>
 
 
 
+<div id="lightbox" onclick="this.style.display='none'">
+<img id="lightboximg">
+</div>
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
 
 <script>
 
-/* 3D EARTH */
+/* ROCK MODEL */
 
 var scene=new THREE.Scene();
 
-var camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+var camera=new THREE.PerspectiveCamera(75,window.innerWidth/350,0.1,1000);
 
 var renderer=new THREE.WebGLRenderer();
 
-renderer.setSize(window.innerWidth,300);
+renderer.setSize(window.innerWidth,350);
 
-document.getElementById("earth").appendChild(renderer.domElement);
+document.getElementById("rockviewer").appendChild(renderer.domElement);
 
-var geometry=new THREE.SphereGeometry(5,32,32);
+var light=new THREE.HemisphereLight(0xffffff);
 
-var texture=new THREE.TextureLoader().load("https://threejsfundamentals.org/threejs/resources/images/earth-day.jpg");
+scene.add(light);
 
-var material=new THREE.MeshBasicMaterial({map:texture});
+var loader=new THREE.GLTFLoader();
 
-var earth=new THREE.Mesh(geometry,material);
+loader.load("rock.glb",function(gltf){
 
-scene.add(earth);
+scene.add(gltf.scene);
 
-camera.position.z=10;
+});
+
+camera.position.z=5;
 
 function animate(){
 
 requestAnimationFrame(animate);
-
-earth.rotation.y+=0.005;
 
 renderer.render(scene,camera);
 
@@ -282,43 +393,19 @@ renderer.render(scene,camera);
 
 animate();
 
+</script>
 
 
-/* ROCK VIEWER */
 
-var scene2=new THREE.Scene();
+<script>
 
-var camera2=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+/* AI DEMO */
 
-var renderer2=new THREE.WebGLRenderer();
+document.getElementById("upload").onchange=function(){
 
-renderer2.setSize(window.innerWidth,300);
-
-document.getElementById("rockviewer").appendChild(renderer2.domElement);
-
-var geo=new THREE.BoxGeometry();
-
-var mat=new THREE.MeshNormalMaterial();
-
-var cube=new THREE.Mesh(geo,mat);
-
-scene2.add(cube);
-
-camera2.position.z=5;
-
-function animate2(){
-
-requestAnimationFrame(animate2);
-
-cube.rotation.x+=0.01;
-
-cube.rotation.y+=0.01;
-
-renderer2.render(scene2,camera2);
+document.getElementById("result").innerHTML="Possible Rock: Metamorphic Gneiss (Demo AI)";
 
 }
-
-animate2();
 
 </script>
 
@@ -330,20 +417,31 @@ animate2();
 
 var map=L.map('map').setView([19.3149,84.7941],8);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-maxZoom:19
-
-}).addTo(map);
-
-L.marker([19.3149,84.7941]).addTo(map)
-
-.bindPopup("Eastern Ghats Field Study")
-
-.openPopup();
+L.marker([19.3149,84.7941]).addTo(map).bindPopup("Eastern Ghats Field Area");
 
 </script>
 
+
+
+<script>
+
+/* LIGHTBOX */
+
+document.querySelectorAll(".card img").forEach(img=>{
+
+img.onclick=function(){
+
+document.getElementById("lightbox").style.display="flex";
+
+document.getElementById("lightboximg").src=this.src;
+
+}
+
+})
+
+</script>
 
 </body>
 </html>
