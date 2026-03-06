@@ -1,1 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eastern Ghats Mobile Belt Field Study</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* GALAXY BACKGROUND */
+
+body::before{
+
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa");
+background-size:cover;
+opacity:0.25;
+z-index:-1;
+
+}
+
+/* NAV */
+
+nav{
+
+position:fixed;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+padding:15px;
+text-align:center;
+
+}
+
+nav a{
+
+color:white;
+margin:20px;
+text-decoration:none;
+font-weight:bold;
+
+}
+
+/* HERO */
+
+.hero{
+
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:48px;
+
+}
+
+/* GLASS SECTION */
+
+.section{
+
+max-width:1100px;
+margin:auto;
+margin-top:120px;
+padding:40px;
+
+background:rgba(255,255,255,0.05);
+border-radius:20px;
+backdrop-filter:blur(20px);
+
+}
+
+/* GALLERY */
+
+.gallery{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+
+}
+
+.gallery img{
+
+width:100%;
+border-radius:10px;
+
+}
+
+/* MAP */
+
+#map{
+
+height:500px;
+
+}
+
+footer{
+
+text-align:center;
+padding:40px;
+opacity:0.7;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<a href="#about">About</a>
+<a href="#viewer">3D Rock</a>
+<a href="#gallery">Gallery</a>
+<a href="#map">Map</a>
+<a href="#report">Report</a>
+
+</nav>
+
+
+<section class="hero">
+
+<h1>Eastern Ghats Mobile Belt</h1>
+<p>Geological Field Study – Bikrant Kumar Mishra</p>
+
+<div id="earth"></div>
+
+</section>
+
+
+<section class="section" id="about">
+
+<h2>About This Project</h2>
+
+<p>
+
+This geological field study focuses on the Eastern Ghats Mobile Belt (EGMB) in Odisha, India.  
+
+The research documents metamorphic rock formations, fold structures, dyke intrusions, gneissic banding and structural geology observed in the regions of Bhabandha, Bhatakumuruda, Baghdevi and Athagadapatana.
+
+</p>
+
+</section>
+
+
+<section class="section" id="viewer">
+
+<h2>3D Rock Viewer</h2>
+
+<div id="rockviewer"></div>
+
+</section>
+
+
+<section class="section" id="gallery">
+
+<h2>Field Observation Gallery</h2>
+
+<div class="gallery">
+
+<img src="anticline_fold_gneiss_outcrop.jpg">
+<img src="augen_gneiss_structure.jpg">
+<img src="bhabandha_geological_outcrop.jpg">
+<img src="biotite_gneiss_outcrop_egmb.jpg">
+<img src="chevron_fold_structure_gneiss.jpg">
+<img src="dyke_intrusion_structure.jpg">
+<img src="fault_displacement_structure.jpg">
+<img src="garnet_pokering_weathering.jpg">
+<img src="garnetiferous_gneiss_outcrop.jpg">
+<img src="garnetiferous_gneiss_texture.jpg">
+<img src="gneissic_banding_outcrop.jpg">
+<img src="gneissic_banding_outcrop_egmb.jpg">
+<img src="granite_outcrop_eastern_ghats.jpg">
+<img src="isoclinal_fold_gneiss_structure.jpg">
+<img src="mafic_dyke_intrusion_in_gneiss.jpg">
+<img src="mica_schist_foliation_egmb.jpg">
+<img src="quartz_feldspar_vein_gneiss.jpg">
+<img src="syncline_fold_gneiss_outcrop.jpg">
+<img src="tor_landform_granite.jpg">
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>Study Area Map</h2>
+
+<div id="map"></div>
+
+</section>
+
+
+<section class="section" id="report">
+
+<h2>Full Geological Report</h2>
+
+<p>
+
+<a href="https://drive.google.com/file/d/1RARTVAqPCuQO_Yaq7eBROUf2qzYmINB_/view?usp=sharing" target="_blank">
+
+Open Full Geological Field Report
+
+</a>
+
+</p>
+
+</section>
+
+
+<footer>
+
+Bikrant Kumar Mishra  
+Department of Geology  
+Khallikote Unitary University  
+
+</footer>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+
+/* 3D EARTH */
+
+var scene=new THREE.Scene();
+
+var camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+
+var renderer=new THREE.WebGLRenderer();
+
+renderer.setSize(window.innerWidth,300);
+
+document.getElementById("earth").appendChild(renderer.domElement);
+
+var geometry=new THREE.SphereGeometry(5,32,32);
+
+var texture=new THREE.TextureLoader().load("https://threejsfundamentals.org/threejs/resources/images/earth-day.jpg");
+
+var material=new THREE.MeshBasicMaterial({map:texture});
+
+var earth=new THREE.Mesh(geometry,material);
+
+scene.add(earth);
+
+camera.position.z=10;
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+earth.rotation.y+=0.005;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+
+
+/* ROCK VIEWER */
+
+var scene2=new THREE.Scene();
+
+var camera2=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+
+var renderer2=new THREE.WebGLRenderer();
+
+renderer2.setSize(window.innerWidth,300);
+
+document.getElementById("rockviewer").appendChild(renderer2.domElement);
+
+var geo=new THREE.BoxGeometry();
+
+var mat=new THREE.MeshNormalMaterial();
+
+var cube=new THREE.Mesh(geo,mat);
+
+scene2.add(cube);
+
+camera2.position.z=5;
+
+function animate2(){
+
+requestAnimationFrame(animate2);
+
+cube.rotation.x+=0.01;
+
+cube.rotation.y+=0.01;
+
+renderer2.render(scene2,camera2);
+
+}
+
+animate2();
+
+</script>
+
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+var map=L.map('map').setView([19.3149,84.7941],8);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+
+maxZoom:19
+
+}).addTo(map);
+
+L.marker([19.3149,84.7941]).addTo(map)
+
+.bindPopup("Eastern Ghats Field Study")
+
+.openPopup();
+
+</script>
+
+
+</body>
+</html>
