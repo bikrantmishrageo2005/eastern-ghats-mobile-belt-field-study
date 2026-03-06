@@ -2,23 +2,24 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Eastern Ghats Mobile Belt Field Study</title>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
 
 body{
 margin:0;
 font-family:Segoe UI;
-background:#070707;
 color:white;
+background:#0a0a0a;
 }
 
-/* SPACE BACKGROUND */
+/* BACKGROUND */
 
 body::before{
 content:"";
@@ -27,23 +28,26 @@ width:100%;
 height:100%;
 background:url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
 background-size:cover;
-opacity:0.35;
+background-position:center;
+opacity:0.25;
 z-index:-1;
 }
 
-/* NAV */
+/* NAVBAR */
 
 nav{
 position:fixed;
+top:0;
 width:100%;
 background:rgba(0,0,0,0.8);
-padding:10px;
+padding:12px;
 text-align:center;
+z-index:1000;
 }
 
 nav a{
 color:white;
-margin:12px;
+margin:15px;
 text-decoration:none;
 font-weight:bold;
 }
@@ -56,7 +60,8 @@ text-align:center;
 }
 
 .hero h1{
-font-size:42px;
+font-size:48px;
+font-weight:700;
 }
 
 /* SECTION */
@@ -65,11 +70,10 @@ font-size:42px;
 max-width:1200px;
 margin:auto;
 margin-top:60px;
-padding:35px;
-
-background:rgba(255,255,255,0.05);
+padding:30px;
+background:rgba(255,255,255,0.06);
 border-radius:15px;
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 }
 
 /* GALLERY */
@@ -82,37 +86,19 @@ gap:25px;
 
 .card{
 background:#111;
-border-radius:10px;
+border-radius:12px;
 overflow:hidden;
 }
 
 .card img{
 width:100%;
-cursor:pointer;
+display:block;
 }
 
 .caption{
 padding:10px;
 font-size:14px;
-}
-
-/* LIGHTBOX */
-
-#lightbox{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-#lightbox img{
-max-width:90%;
-max-height:90%;
+opacity:0.8;
 }
 
 /* MAP */
@@ -121,10 +107,12 @@ max-height:90%;
 height:500px;
 }
 
-/* 3D VIEWERS */
+/* TOPOSHEET */
 
-#rockviewer,#globe{
-height:350px;
+.toposheet{
+width:100%;
+border-radius:10px;
+margin-top:15px;
 }
 
 /* TABLE */
@@ -134,9 +122,10 @@ width:100%;
 border-collapse:collapse;
 }
 
-td,th{
-border:1px solid #333;
+th,td{
+border:1px solid rgba(255,255,255,0.2);
 padding:10px;
+text-align:left;
 }
 
 /* FOOTER */
@@ -144,7 +133,7 @@ padding:10px;
 footer{
 text-align:center;
 padding:40px;
-opacity:0.7;
+opacity:0.6;
 }
 
 </style>
@@ -157,11 +146,8 @@ opacity:0.7;
 
 <a href="#about">About</a>
 <a href="#toposheet">Toposheet</a>
-<a href="#globe">Globe</a>
-<a href="#viewer">3D Rock</a>
 <a href="#gallery">Gallery</a>
 <a href="#map">Map</a>
-<a href="#ai">AI Rock</a>
 <a href="#report">Report</a>
 
 </nav>
@@ -181,9 +167,7 @@ opacity:0.7;
 
 <p>
 
-This study documents geological structures and metamorphic rocks from the Eastern Ghats Mobile Belt in Odisha.
-
-Observed structures include folds, faults, gneissic banding, dyke intrusions and garnetiferous metamorphic rocks.
+This geological field study documents geological structures and metamorphic rocks from the Eastern Ghats Mobile Belt (EGMB) in Odisha, India. Observed structures include folds, faults, gneissic banding, dyke intrusions and garnetiferous metamorphic rocks.
 
 </p>
 
@@ -194,83 +178,55 @@ Observed structures include folds, faults, gneissic banding, dyke intrusions and
 
 <h2>Study Area Toposheet</h2>
 
-<img src="egmb_study_area_toposheet.jpg" width="100%">
+<img class="toposheet" src="egmb_study_area_toposheet.jpg">
 
-</section>
-
-
-<section class="section">
-
-<h2>Geological Globe</h2>
-
-<div id="globe"></div>
-
-</section>
-
-
-<section class="section" id="viewer">
-
-<h2>3D Rock Model</h2>
-
-<div id="rockviewer"></div>
-
-</section>
-
-
-<section class="section">
-
-<h2>Geological Data</h2>
-
-<table>
-
-<tr>
-<th>Rock Type</th>
-<th>Mineral</th>
-<th>Location</th>
-</tr>
-
-<tr>
-<td>Garnetiferous Gneiss</td>
-<td>Garnet</td>
-<td>Bhabandha</td>
-</tr>
-
-<tr>
-<td>Mica Schist</td>
-<td>Biotite</td>
-<td>Baghdevi</td>
-</tr>
-
-<tr>
-<td>Granite</td>
-<td>Quartz Feldspar</td>
-<td>Athagadapatana</td>
-</tr>
-
-</table>
+<p>
+Survey of India Toposheet used for geological field mapping and identifying the Eastern Ghats Mobile Belt study region.
+</p>
 
 </section>
 
 
 <section class="section" id="gallery">
 
-<h2>Field Gallery</h2>
+<h2>Field Observation Gallery</h2>
 
 <div class="gallery">
 
+
 <div class="card">
 <img src="anticline_fold_gneiss_outcrop.jpg">
-<div class="caption">Anticline fold in gneiss.</div>
+<div class="caption">Anticline fold structure in gneiss.</div>
 </div>
 
 <div class="card">
 <img src="augen_gneiss_structure.jpg">
-<div class="caption">Augen gneiss structure.</div>
+<div class="caption">Augen gneiss with eye shaped feldspar.</div>
 </div>
 
 <div class="card">
-<img src="gneissic_banding_outcrop.jpg">
-<div class="caption">Gneissic banding.</div>
+<img src="bhabandha_geological_outcrop.jpg">
+<div class="caption">Geological outcrop from Bhabandha area.</div>
+</div>
+
+<div class="card">
+<img src="biotite_gneiss_outcrop_egmb.jpg">
+<div class="caption">Biotite gneiss outcrop.</div>
+</div>
+
+<div class="card">
+<img src="chevron_fold_structure_gneiss.jpg">
+<div class="caption">Chevron fold due to compression.</div>
+</div>
+
+<div class="card">
+<img src="dyke_intrusion_structure.jpg">
+<div class="caption">Dyke intrusion cutting host rock.</div>
+</div>
+
+<div class="card">
+<img src="fault_displacement_structure.jpg">
+<div class="caption">Fault displacement structure.</div>
 </div>
 
 <div class="card">
@@ -279,8 +235,28 @@ Observed structures include folds, faults, gneissic banding, dyke intrusions and
 </div>
 
 <div class="card">
+<img src="gneissic_banding_outcrop.jpg">
+<div class="caption">Typical gneissic banding.</div>
+</div>
+
+<div class="card">
 <img src="mafic_dyke_intrusion_in_gneiss.jpg">
 <div class="caption">Mafic dyke intrusion.</div>
+</div>
+
+<div class="card">
+<img src="mica_schist_foliation_egmb.jpg">
+<div class="caption">Mica schist foliation.</div>
+</div>
+
+<div class="card">
+<img src="quartz_feldspar_vein_gneiss.jpg">
+<div class="caption">Quartz feldspar vein in gneiss.</div>
+</div>
+
+<div class="card">
+<img src="syncline_fold_gneiss_outcrop.jpg">
+<div class="caption">Syncline fold structure.</div>
 </div>
 
 <div class="card">
@@ -295,29 +271,9 @@ Observed structures include folds, faults, gneissic banding, dyke intrusions and
 
 <section class="section">
 
-<h2>Field Route</h2>
-
-Berhampur → Bhabandha → Baghdevi → Athagadapatana
-
-</section>
-
-
-<section class="section">
-
 <h2>Study Area Map</h2>
 
 <div id="map"></div>
-
-</section>
-
-
-<section class="section" id="ai">
-
-<h2>AI Rock Identifier (Demo)</h2>
-
-<input type="file" id="upload">
-
-<p id="result"></p>
 
 </section>
 
@@ -326,11 +282,15 @@ Berhampur → Bhabandha → Baghdevi → Athagadapatana
 
 <h2>Full Geological Report</h2>
 
+<p>
+
 <a href="https://drive.google.com/file/d/1RARTVAqPCuQO_Yaq7eBROUf2qzYmINB_/view?usp=sharing" target="_blank">
 
-View Full PDF Report
+View Complete Geological Field Report (PDF)
 
 </a>
+
+</p>
 
 </section>
 
@@ -339,76 +299,9 @@ View Full PDF Report
 
 Bikrant Kumar Mishra  
 Department of Geology  
-Khallikote University
+Khallikote Unitary University  
 
 </footer>
-
-
-
-<div id="lightbox" onclick="this.style.display='none'">
-<img id="lightboximg">
-</div>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
-
-<script>
-
-/* ROCK MODEL */
-
-var scene=new THREE.Scene();
-
-var camera=new THREE.PerspectiveCamera(75,window.innerWidth/350,0.1,1000);
-
-var renderer=new THREE.WebGLRenderer();
-
-renderer.setSize(window.innerWidth,350);
-
-document.getElementById("rockviewer").appendChild(renderer.domElement);
-
-var light=new THREE.HemisphereLight(0xffffff);
-
-scene.add(light);
-
-var loader=new THREE.GLTFLoader();
-
-loader.load("rock.glb",function(gltf){
-
-scene.add(gltf.scene);
-
-});
-
-camera.position.z=5;
-
-function animate(){
-
-requestAnimationFrame(animate);
-
-renderer.render(scene,camera);
-
-}
-
-animate();
-
-</script>
-
-
-
-<script>
-
-/* AI DEMO */
-
-document.getElementById("upload").onchange=function(){
-
-document.getElementById("result").innerHTML="Possible Rock: Metamorphic Gneiss (Demo AI)";
-
-}
-
-</script>
-
 
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -417,29 +310,10 @@ document.getElementById("result").innerHTML="Possible Rock: Metamorphic Gneiss (
 
 var map=L.map('map').setView([19.3149,84.7941],8);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 
-L.marker([19.3149,84.7941]).addTo(map).bindPopup("Eastern Ghats Field Area");
-
-</script>
-
-
-
-<script>
-
-/* LIGHTBOX */
-
-document.querySelectorAll(".card img").forEach(img=>{
-
-img.onclick=function(){
-
-document.getElementById("lightbox").style.display="flex";
-
-document.getElementById("lightboximg").src=this.src;
-
-}
-
-})
+L.marker([19.3149,84.7941]).addTo(map)
+.bindPopup("Eastern Ghats Mobile Belt Field Study");
 
 </script>
 
